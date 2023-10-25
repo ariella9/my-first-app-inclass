@@ -3,6 +3,13 @@ from getpass import getpass
 API_KEY = getpass("Please input your AlphaVantage API Key: ")
 
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv() # go look in the .env file for any env vars
+
+API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
+
 import requests
 import json
 from pprint import pprint
