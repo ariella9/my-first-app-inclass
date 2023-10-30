@@ -28,3 +28,5 @@ Run the unemployment report:
 
 '''sh
 python app/unemployment.py 
+
+ALPHAVANTAGE_API_KEY="abc123" python app/unemployment.py
