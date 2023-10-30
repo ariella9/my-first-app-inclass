@@ -1,7 +1,3 @@
-from getpass import getpass
-
-API_KEY = getpass("Please input your AlphaVantage API Key: ")
-
 
 import os
 from dotenv import load_dotenv
