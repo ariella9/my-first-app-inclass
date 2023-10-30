@@ -13,7 +13,7 @@ conda activate my-first-env
 Install packages:
 
 '''sh
-pip install -r rqequirements.txt
+pip install -r requirements.txt
 '''
 
 ## Usage
