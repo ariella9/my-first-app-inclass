@@ -4,8 +4,9 @@ requests
 
 plotly
 
-pandas 
+# ImportError: Plotly express requires pandas to be installed.
+pandas
 
 python-dotenv
 
-sendgrid=6.5.0
+sendgrid==6.5.0
