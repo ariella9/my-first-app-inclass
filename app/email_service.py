@@ -8,24 +8,36 @@ from sendgrid.helpers.mail import Mail
 
 load_dotenv() # go look in the .env file for any env vars
 
-SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
-SENDER_ADDRESS = os.getenv("SENDER_ADDRESS")
-
-
-
+MAILGUN_API_KEY = os.getenv("MAILGUN_API_KEY")
+MAILGUN_SENDER_ADDRESS = os.getenv("MAILGUN_SENDER_ADDRESS")
+MAILGUN_DOMAIN = os.getenv("MAILGUN_DOMAIN") # "sandbox__________.mailgun.org"
 
 def send_email(recipient_address=SENDER_ADDRESS, subject="[Shopping Cart App] Testing 123", html_content="<p>Hello World</p>"):
     print("SENDING EMAIL TO:", recipient_address)
     print("SUBJECT:", subject)
     print("HTML:", html_content)
 
-    client = SendGridAPIClient(SENDGRID_API_KEY)
-    print("CLIENT:", type(client))
-
-    message = Mail(from_email=SENDER_ADDRESS, to_emails=recipient_address, subject=subject, html_content=html_content)
-
     try:
-        response = client.send(message)
+        request_url = f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages"
+        message_data = {
+            'from': MAILGUN_SENDER_ADDRESS,
+            'to': recipient_address,
+            'subject': subject,
+            'html': html_content,
+        }
+        response = requests.post(request_url,
+            auth=('api', MAILGUN_API_KEY),
+            data=message_data
+        )
+        print("RESULT:", response.status_code)
+        response.raise_for_status()
+        print("Email sent successfully!")
+    except requests.exceptions.RequestException as e:
+        print(f"Error sending email: {str(e)}")
+
+
+
+send_email()
 
         print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
         print(response.status_code) #> 202 indicates SUCCESS
