@@ -1,8 +1,9 @@
 import os
 
 from dotenv import load_dotenv
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
+#from sendgrid import SendGridAPIClient
+#from sendgrid.helpers.mail import Mail
+import requests 
 
 # ENVIRONMENT VARIABLES AND CONSTANTS
 
@@ -12,7 +13,7 @@ MAILGUN_API_KEY = os.getenv("MAILGUN_API_KEY")
 MAILGUN_SENDER_ADDRESS = os.getenv("MAILGUN_SENDER_ADDRESS")
 MAILGUN_DOMAIN = os.getenv("MAILGUN_DOMAIN") # "sandbox__________.mailgun.org"
 
-def send_email(recipient_address=SENDER_ADDRESS, subject="[Shopping Cart App] Testing 123", html_content="<p>Hello World</p>"):
+def send_email(recipient_address=MAILGUN_SENDER_ADDRESS, subject="[Shopping Cart App] Testing 123", html_content="<p>Hello World</p>"):
     print("SENDING EMAIL TO:", recipient_address)
     print("SUBJECT:", subject)
     print("HTML:", html_content)
@@ -34,19 +35,6 @@ def send_email(recipient_address=SENDER_ADDRESS, subject="[Shopping Cart App] Te
         print("Email sent successfully!")
     except requests.exceptions.RequestException as e:
         print(f"Error sending email: {str(e)}")
-
-
-
-send_email()
-
-        print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
-        print(response.status_code) #> 202 indicates SUCCESS
-        print(response.body)
-        print(response.headers)
-
-    except Exception as err:
-        print(type(err))
-        print(err)
 
 
 if __name__ == "__main__":
