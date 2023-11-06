@@ -25,6 +25,8 @@ Create a ".env" file and paste in the following contents:
 # this is the ".env" file...
 
 ALPHAVANTAGE_API_KEY="_________"
+MAILGUN_API_KEY="_________"
+MAILGUN_ADDRESS="example@georgetown.edu"
 ```
 
 ## Usage
