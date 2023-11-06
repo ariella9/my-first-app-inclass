@@ -12,10 +12,11 @@ conda activate my-first-env
 
 Install packages:
 
-'''sh
+```sh
 pip install -r requirements.txt
-'''
+```
 
+#
 Obtain an [API Key from Alphavantage](https://www.alphavantage.co/support/#api-key) or from the prof (`ALPHAVANTAGE_API_KEY`).
 
 Create a ".env" file and paste in the following contents:
@@ -32,9 +33,17 @@ Run the example script:
 
 ```sh
 python app/my_script.py
-``` 
+```
 
 Run the unemployment report:
 
-'''sh
+```sh
 python app/unemployment.py 
+```
+
+
+Send an example email:
+
+```sh
+python app/email_service.py
+```
