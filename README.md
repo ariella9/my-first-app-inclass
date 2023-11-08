@@ -32,6 +32,7 @@ MAILGUN_ADDRESS="example@myschool.edu"
 
 ## Usage
 
+
 Run the example script:
 
 ```sh
@@ -49,4 +50,13 @@ Send an example email:
 
 ```sh
 python app/email_service.py
+```
+
+
+## TESTING
+
+Run tests:
+
+```sh
+pytest
 ```
