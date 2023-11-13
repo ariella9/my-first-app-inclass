@@ -53,7 +53,7 @@ python app/email_service.py
 ```
 
 
-## TESTING
+## Testing
 
 Run tests:
 
