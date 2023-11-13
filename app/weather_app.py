@@ -24,7 +24,7 @@ def get_forecast_url(latitude, longitude):
         response.raise_for_status()
         parsed_response = json.loads(response.text)
         return parsed_response["properties"]["forecast"]
-    except request.RequestException as e:
+    except requests.RequestException as e:
         print(f"Error fetching forecast URL: {e}")
         return None
 
@@ -60,3 +60,4 @@ if __name__ == "__main__":
 # WORKING CODE
     zip_code = input("Please input a zip code (e.g. 06510): ") or "O6510"
     display_forecast(zip_code)
+
