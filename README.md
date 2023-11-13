@@ -52,6 +52,11 @@ Send an example email:
 python app/email_service.py
 ```
 
+Run weather app:
+
+```sh
+python app/weather_app.py
+```
 
 ## Testing
 
