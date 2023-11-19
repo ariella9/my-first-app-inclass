@@ -14,5 +14,7 @@ pgeocode
 
 IPython
 
+flask
+
 # TEST
 pytest 
