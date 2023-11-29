@@ -16,5 +16,7 @@ IPython
 
 flask
 
+gunicorn
+
 # TEST
 pytest 
