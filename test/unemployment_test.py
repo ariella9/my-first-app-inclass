@@ -13,3 +13,4 @@ def test_fetch_data():
 
     assert isinstance(data[0], dict)
     assert list(data[0].keys()) == ["date", "value"]
+    
