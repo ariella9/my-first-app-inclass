@@ -4,25 +4,31 @@
 
 {% block content %}
 
-    <h2>Stocks Form</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Stocks Form</h2>
+            <p>Request some stock market data...</p>
 
-    <p>Request some stock market data...</p>
+            <form action="/stocks/dashboard" method="POST">
+                <div class="form-group mb-3">
+                    <label for="symbol">Stock Symbol:</label>
+                    <input type="text" class="form-control" id="symbol" name="symbol" placeholder="MSFT" value="MSFT">
+                </div>
 
-    <form action="/stocks/dashboard" method="POST">
+                <div class="form-group mb-3">
+                    <label for="risk_level">Risk Tolerance:</label>
+                    <select class="form-control" id="risk_level" name="risk_level">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
 
-        <label>Stock Symbol:</label>
-        <input type="text" name="symbol" placeholder="MSFT" value="MSFT">
-        <br>
-
-        <label>Risk Tolerance:</label>
-        <select name="risk_level">
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-        </select>
-        <br>
-
-        <button class="btn btn-success">Submit</button>
-    </form>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
