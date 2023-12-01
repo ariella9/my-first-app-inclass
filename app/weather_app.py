@@ -12,6 +12,7 @@ import pandas as pd
 load_dotenv() 
 DEGREE_SIGN = u"\n{DEGREE SIGN}"
 
+
 # FUNCTIONS
 def query_postal_code(zip_code, country_code="US"):
     nomi = Nominatim(country_code)
@@ -47,13 +48,28 @@ def display_forecast(zip_code):
         periods = parsed_forecast_response["properties"]["periods"]
         daytime_periods = [period for period in periods if period["isDaytime"]]
 
+        #for period in daytime_periods:
+            #print("----------------")
+            #print(period["name"], period["startTime"][0:10])
+            #print(period["shortForecast"], f"{period['temperature']} {DEGREE_SIGN}{period['temperatureUnit']}")
+            #display(Image(url=period["icon"]))
+    #except requests.RequestException as e:
+        #print(f"Error fetching forecast data: {e}")
+
+        forecast_data = []
         for period in daytime_periods:
-            print("----------------")
-            print(period["name"], period["startTime"][0:10])
-            print(period["shortForecast"], f"{period['temperature']} {DEGREE_SIGN}{period['temperatureUnit']}")
-            display(Image(url=period["icon"]))
+            forecast_data.append({
+                "name": period["name"],
+                "startTime": period["startTime"],
+                "shortForecast": period["shortForecast"],
+                "temperature": f"{period['temperature']} {DEGREE_SIGN}{period['temperatureUnit']}",
+                "icon": period["icon"]
+            })
+
+        return forecast_data
     except requests.RequestException as e:
         print(f"Error fetching forecast data: {e}")
+        return []
 
 if __name__ == "__main__":
 
